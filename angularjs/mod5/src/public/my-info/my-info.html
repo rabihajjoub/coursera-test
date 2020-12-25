@@ -1,0 +1,24 @@
+<div class="container" id="myinfo">
+  <h2 class="text-center">My Info</h2>
+
+
+  <div class="myinfo" ng-if="myInfoCtrl.saved">
+    <div class="container">
+      <p>First Name: {{myInfoCtrl.userInfo.firstName}}</p>
+      <p>Last Name: {{myInfoCtrl.userInfo.lastName}}</p>
+      <p>Email: {{myInfoCtrl.userInfo.emailAddress}}</p>
+      <p>Phone: {{myInfoCtrl.userInfo.phoneNumber}}</p>
+      <p>Favorite Dish: {{myInfoCtrl.userInfo.favoriteDish}}</p>
+    <div class="myinfo-dish">
+      <menu-item menu-item="myInfoCtrl.userInfo.MenuItem"></menu-item>
+    </div>
+  </div>
+  </div>
+
+  <div class="myinfo-alert">
+    <div class="alert alert-warning" ng-if="!myInfoCtrl.saved">
+      <h2>Not Signed Up</h2>
+      <button type="button" ui-sref="public.signup" class="btn btn-secondary">Create User Account</button>
+    </div>
+  </div>
+</div>

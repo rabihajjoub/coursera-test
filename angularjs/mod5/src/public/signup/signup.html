@@ -1,0 +1,57 @@
+<div class="container">
+
+  <div ng-if="!signUpCtrl.saved">
+    <h2 class="text-center">Sign Up</h2>
+  </div>
+  <form name="signupForm" novalidate>
+    <div class="form-group">
+      <label for="firstName">First Name</label>
+      <input type="text" class="form-control" id="firstName" name="firstName" placeholder="First Name"
+        ng-model="signupCtrl.userInfo.firstName" required>
+      <span ng-if="signupForm.firstName.$error.required && signupForm.firstName.$touched">
+        <small>First name is required.</small>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="lastName">Last Name</label>
+      <input type="text" class="form-control" id="lastName" name="lastName" placeholder="Last Name"
+        ng-model="signupCtrl.userInfo.lastName" required>
+      <span ng-if="signupForm.lastName.$error.required && signupForm.lastName.$touched">
+        <small>Last name is required.</small>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="emailAddress">Email</label>
+      <input type="email" class="form-control" id="emailAddress" name="emailAddress" placeholder="Email"
+        ng-model="signupCtrl.userInfo.emailAddress" required>
+      <span ng-if="signupForm.emailAddress.$invalid && signupForm.emailAddress.$touched">
+        <small>Enter a valid email address. (example: username@company.com)</small>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="phoneNumber">Phone</label>
+      <input type="tel" class="form-control" id="phoneNumber" name="phoneNumber"
+        ng-model="signupCtrl.userInfo.phoneNumber" placeholder="XXX-XXX-XXXX" pattern="(\d{3})-(\d{3})-(\d{4})">
+      <span ng-if="signupForm.phoneNumber.$invalid && signupForm.phoneNumber.$touched">
+        <small>Enter a phone number in the following format: XXX-XXX-XXXX.</small>
+      </span>
+    </div>
+    <div class="form-group">
+      <label for="favoriteDish">Favorite Dish</label>
+      <input type="text" class="form-control" id="favoriteDish" name="favoriteDish"
+        placeholder="short code for favorite dish" ng-model="signupCtrl.userInfo.favoriteDish"
+        ng-blur="signupCtrl.validateFavdish()">
+      <span ng-if="signupCtrl.itemSearched && !signupCtrl.validShortCode">
+        <small>Matching menu short code not found.</small>
+      </span>
+
+    </div>
+    <button class="btn btn-success" ng-disabled="signupForm.$invalid" ng-click="signupCtrl.setMyinfo()">Submit</button>
+  </form>
+</div>
+
+<div class="container" ng-if="signupCtrl.saved">
+  <br />
+  <p class="alert alert-success">Your account has been created.</p>
+</div>
+</div>
